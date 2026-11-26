@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>José Quicaña | Tarjeta digital</title>
+    <meta name="description" content="CV, LinkedIn, GitHub y contacto de José Alonso Quicaña Guzmán, desarrollador móvil Android e iOS." />
+    <meta name="theme-color" content="#06141f" />
+    <meta property="og:title" content="José Quicaña | Desarrollador Móvil" />
+    <meta property="og:description" content="Mi CV, LinkedIn, GitHub y contacto en un solo lugar." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" />
+    <style>
+      :root {
+        --bg: #06141f;
+        --card: #0b1e2c;
+        --line: #24506a;
+        --accent: #2ee6a6;
+        --accent-2: #3aa0ff;
+        --text: #e8f3f8;
+        --muted: #9fbccb;
+        color-scheme: dark;
+      }
+
+      * { box-sizing: border-box; margin: 0; }
+
+      body {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 20px 16px;
+        background:
+          radial-gradient(circle at 15% 10%, rgba(58, 160, 255, 0.18), transparent 40%),
+          linear-gradient(180deg, #0a2233 0%, var(--bg) 100%) fixed;
+        color: var(--text);
+        font: 400 1rem/1.5 'Inter', system-ui, sans-serif;
+      }
+
+      .card {
+        width: min(420px, 100%);
+        overflow: hidden;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+        text-align: center;
+      }
+
+      .cover {
+        height: 130px;
+        background:
+          linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px) 0 0 / 18px 18px,
+          linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px) 0 0 / 18px 18px,
+          linear-gradient(135deg, var(--accent-2), var(--accent));
+      }
+
+      .photo-wrap {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin: -80px auto 0;
+        border-radius: 50%;
+        border: 6px solid var(--card);
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+        background: linear-gradient(135deg, #12324a, #0b1e2c);
+        overflow: hidden;
+      }
+
+      .photo-wrap span {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font: 700 2.8rem 'Space Grotesk', sans-serif;
+        color: var(--accent);
+      }
+
+      .photo {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .content { padding: 20px 24px 28px; }
+
+      h1 { font: 700 clamp(1.5rem, 7vw, 2rem) / 1.15 'Space Grotesk', system-ui, sans-serif; }
+
+      .full-name { margin-top: 4px; font-size: 0.82rem; color: var(--muted); }
+
+      .role { margin-top: 12px; font-weight: 600; color: var(--accent); }
+
+      .tagline { max-width: 32ch; margin: 6px auto 0; color: var(--muted); font-size: 0.95rem; }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 14px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .chips li {
+        padding: 3px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+
+      .links { display: grid; gap: 14px; margin-top: 24px; padding: 0; list-style: none; }
+
+      .link {
+        display: grid;
+        grid-template-columns: 28px 1fr 28px;
+        align-items: center;
+        gap: 10px;
+        min-height: 60px;
+        padding: 10px 18px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text);
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      }
+
+      .link:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+        background: rgba(46, 230, 166, 0.1);
+      }
+
+      .link:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 3px; }
+
+      .link.primary { background: var(--accent); border-color: var(--accent); color: #06141f; }
+      .link.primary:hover { background: #5cf0bd; }
+
+      .link svg { width: 24px; height: 24px; fill: currentColor; }
+
+      .link small { display: block; font-weight: 400; font-size: 0.78rem; opacity: 0.85; }
+
+      .projects { margin-top: 30px; text-align: left; }
+      .projects h2 { font: 700 1.2rem 'Space Grotesk', sans-serif; text-align: center; margin-bottom: 14px; }
+      .project { padding: 14px 16px; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 14px; background: rgba(255,255,255,0.03); }
+      .project + .project { margin-top: 10px; }
+      .project h3 { font: 700 1rem 'Space Grotesk', sans-serif; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+      .project h3 em { font: 600 0.68rem 'Inter', sans-serif; font-style: normal; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 1px 8px; }
+      .project p { margin-top: 4px; font-size: 0.86rem; color: var(--muted); }
+      .project .stack { margin-top: 6px; font-size: 0.75rem; color: var(--accent-2); }
+
+      footer { margin-top: 22px; font-size: 0.78rem; color: var(--muted); }
+
+      @media (prefers-reduced-motion: reduce) { .link { transition: none; } }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="cover"></div>
+      <div class="photo-wrap">
+        <span aria-hidden="true">JQ</span>
+        <img class="photo" src="foto.jpg" alt="Foto de José Alonso Quicaña Guzmán" width="150" height="150" onerror="this.remove()" />
+      </div>
+
+      <div class="content">
+        <h1>José Quicaña</h1>
+        <p class="full-name">José Alonso Quicaña Guzmán</p>
+        <p class="role">Desarrollador Móvil · Android &amp; iOS</p>
+        <p class="tagline">Construyo apps nativas con Kotlin y SwiftUI. Mi app GoldenHouse ya está en la App Store.</p>
+
+        <ul class="chips" aria-label="Tecnologías">
+          <li>Kotlin</li><li>Swift</li><li>SwiftUI</li><li>Flutter</li><li>Supabase</li><li>ASP.NET Core</li>
+        </ul>
+
+        <ul class="links">
+          <li>
+            <a class="link primary" href="CV_Jose_Quicana_Desarrollador_Movil.pdf" download="CV_Jose_Quicana_Desarrollador_Movil.pdf">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM11 11h2v5l1.8-1.8 1.4 1.4L12 19.8l-4.2-4.2 1.4-1.4L11 16v-5z"/></svg>
+              <span>Descargar mi CV<small>PDF</small></span>
+              <span aria-hidden="true">↓</span>
+            </a>
+          </li>
+          <li hidden>
+            <!-- TODO: pon tu URL real de LinkedIn y quita "hidden" del <li> -->
+            <a class="link" href="https://www.linkedin.com/in/TU-USUARIO/" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+              <span>LinkedIn<small>in/TU-USUARIO</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="https://github.com/joseQK21" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"/></svg>
+              <span>GitHub<small>github.com/joseQK21</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="https://apps.apple.com/pe/app/golden-house/id6790559449" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 1h10a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 3v15h10V4H7zm5 16.2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>
+              <span>GoldenHouse<small>Mi app en App Store</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="https://wa.me/51948096755" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.2z"/></svg>
+              <span>WhatsApp<small>+51 948 096 755</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="mailto:jose.a.q.guzman@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.4l9 5.6 9-5.6V6H3zm18 2.8-9 5.6-9-5.6V18h18V8.8z"/></svg>
+              <span>Correo<small>jose.a.q.guzman@gmail.com</small></span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        </ul>
+
+        <section class="projects" aria-labelledby="proyectos">
+          <h2 id="proyectos">Proyectos</h2>
+          <article class="project">
+            <h3>GoldenHouse <em>En App Store</em></h3>
+            <p>Plataforma de gestión de eventos: invitados, mesas, asistencia y acceso por código o QR, con perfiles de cliente, guardia y administrador.</p>
+            <p class="stack">Kotlin · Swift · SwiftUI · Supabase</p>
+          </article>
+          <article class="project">
+            <h3>CoreScan <em>En desarrollo</em></h3>
+            <p>App para iPhone que usa la cámara y el sensor LiDAR, conectada a Arduino para controlar luces y motores.</p>
+            <p class="stack">Swift · LiDAR · Arduino</p>
+          </article>
+          <article class="project">
+            <h3>AQPlunch</h3>
+            <p>Plataforma para restaurantes con menús, mesas con QR, pedidos y ventas, construida con microservicios y un API Gateway.</p>
+            <p class="stack">.NET · EF Core · PostgreSQL</p>
+          </article>
+          <article class="project">
+            <h3>TecCare</h3>
+            <p>Analítica de cámara en el aula que mide la atención por la orientación de la cabeza (head pose).</p>
+            <p class="stack">Python · YOLOv8 · OpenCV · MQTT</p>
+          </article>
+          <article class="project">
+            <h3>Tecsup Inmerso</h3>
+            <p>Simulación en realidad virtual de un laboratorio de Minería para practicar sin riesgos, con evaluaciones y apoyo visual y de audio.</p>
+            <p class="stack">Unity · VR · C#</p>
+          </article>
+          <article class="project">
+            <h3>Safe Hand Pro · Ergocarga</h3>
+            <p>Prototipos de hardware con sensores (Arduino Nano, ESP32, MPU6050) monitoreados desde apps Flutter en tiempo real.</p>
+            <p class="stack">Flutter · ESP32 · Arduino · BLE</p>
+          </article>
+        </section>
+
+        <footer>Arequipa, Perú · Estudiante de Diseño y Desarrollo de Software en TECSUP</footer>
+      </div>
+    </main>
+  </body>
+</html>
